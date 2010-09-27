@@ -1,9 +1,14 @@
 <lift:surround with="default" at="content">
-  <h2>Welcome to your project!</h2>
-  <p>
-    <lift:helloWorld.howdy>
-      <span>Welcome to your Lift app at <b:time/></span>
-    </lift:helloWorld.howdy>
-  </p>
+   <h2>Input</h2>
+  <lift:FormatSnippet.format>
+   <formatter:inputArea/>
+   <p/>
+   <h2>Formatted</h2>
+<!-- style='background-color: #e1e1ff'  -->
+ <!--  <img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/> -->
+
+   <div id='output'></div>
+  </lift:FormatSnippet.format>
+
 </lift:surround>
 

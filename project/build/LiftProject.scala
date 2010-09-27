@@ -3,6 +3,8 @@ import sbt._
 class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
   val liftVersion = "2.1-RC2"
 
+  val scalariform = "org.scalariform" %% "scalariform" % "0.0.5"
+  	
   // uncomment the following if you want to use the snapshot repo
   //val scalatoolsSnapshot = ScalaToolsSnapshots
 
