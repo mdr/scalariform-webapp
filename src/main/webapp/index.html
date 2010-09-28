@@ -1,14 +1,41 @@
 <lift:surround with="default" at="content">
-   <h2>Input</h2>
-  <lift:FormatSnippet.format>
-   <formatter:inputArea/>
-   <p/>
-   <h2>Formatted</h2>
-<!-- style='background-color: #e1e1ff'  -->
- <!--  <img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/> -->
+	<lift:FormatSnippet.format>
+		<h2>Input</h2>
+		<formatter:inputArea />
+		<p />
+		<h2>Formatted</h2>
 
-   <div id='output'></div>
-  </lift:FormatSnippet.format>
+		<div id='output'></div>
+	</lift:FormatSnippet.format>
+	<h2>Preferences</h2>
+	<div id='preferences'>
+		<lift:FormatSnippet.preferences>
+			<table border='1'>
+				<tr>
+					<th>Preference</th>
+					<th>Description</th>
+					<th>Default</th>
+					<th>Value</th>
+				</tr>
 
+				<formatter:preferences>
+					<tr>
+						<td>
+							<formatter:prefKey />
+						</td>
+						<td>
+							<formatter:prefName />
+						</td>
+						<td>
+							<formatter:prefDefault />
+						</td>
+						<td>
+							<formatter:prefWidget />
+						</td>
+					</tr>
+				</formatter:preferences>
+			</table>
+		</lift:FormatSnippet.preferences>
+	</div>
 </lift:surround>
 

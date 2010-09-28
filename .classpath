@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/scala"/>
+	<classpathentry kind="src" path="src/test/scala"/>
+	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_COMPILER_CONTAINER"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/derby-10.5.3.0_1.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/h2-1.2.138.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/joda-time-1.6.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/lift-actor_2.8.0-2.1-RC2.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/lift-common_2.8.0-2.1-RC2.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/lift-json_2.8.0-2.1-RC2.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/lift-mapper_2.8.0-2.1-RC2.jar" sourcepath="/home/matt/Downloads/lift-lift-543ed8c/framework/lift-persistence/lift-mapper/src/main/scala"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/lift-util_2.8.0-2.1-RC2.jar" sourcepath="/home/matt/Downloads/lift-lift-543ed8c/framework/lift-base/lift-util/src"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/lift-webkit_2.8.0-2.1-RC2.jar" sourcepath="/home/matt/Downloads/lift-lift-543ed8c/framework/lift-base/lift-webkit/src/main/scala"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/mail-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/paranamer-2.0.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/slf4j-api-1.5.11.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/slf4j-log4j12-1.5.11.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/test/jetty-6.1.22.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/test/jetty-util-6.1.22.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/test/junit-4.5.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/test/servlet-api-2.5-20081211.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/test/specs_2.8.0-1.6.5.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.8.0/compile/scalariform_2.8.0-0.0.5.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -13,9 +13,8 @@ derby.log
 
 # eclipse conf file
 .settings
-.classpath
-.project
 .manager
+bin/
 
 # building
 target
