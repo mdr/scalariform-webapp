@@ -27,37 +27,15 @@ class FormatSnippet {
   private var inputOpt: Option[String] = None
 
   def format(xhtml: NodeSeq) = {
-    val inputArea = ajaxTextareaOnKeyUp("", s ⇒ {
+    def onKeyUp(s: String): JsCmd = {
       inputOpt = Some(s)
       doFormat(s)
-    })
+    }
+    val inputArea = ajaxTextareaOnKeyUp("", onKeyUp)
     xhtml.bind(NS, "inputArea" -> inputArea)
   }
 
-  private def currentPreferences = FormattingPrefs.is
-
-  private def setPreferences(prefs: FormattingPreferences) = FormattingPrefs(prefs)
-
-  private def makePreferenceWidget(preference: PreferenceDescriptor[_]): NodeSeq = preference match {
-
-    case BooleanPref(typedPreference) ⇒
-      val currentValue = currentPreferences(typedPreference)
-      def onChange(b: Boolean) = {
-        setPreferences(currentPreferences.setPreference(typedPreference, b))
-        inputOpt map doFormat getOrElse Noop
-      }
-      ajaxCheckbox(currentValue, onChange)
-
-    case IntegerPref(typedPreference, _, _) ⇒
-      val currentValue = currentPreferences(typedPreference)
-      def onChange(s: String) = {
-        val n = Integer.parseInt(s)
-        setPreferences(currentPreferences.setPreference(typedPreference, n))
-        inputOpt map doFormat getOrElse Noop
-      }
-      ajaxText(currentValue.toString, onChange)
-
-  }
+  def preferences(xhtml: NodeSeq) = xhtml.bind(NS, "preferences" -> makePreferencesWidgets _)
 
   private def makePreferencesWidgets(preferencesTemplate: NodeSeq): NodeSeq =
     AllPreferences.preferences flatMap { preference ⇒
@@ -68,7 +46,28 @@ class FormatSnippet {
         "prefWidget" -> makePreferenceWidget(preference))
     }
 
-  def preferences(xhtml: NodeSeq) = xhtml.bind(NS, "preferences" -> makePreferencesWidgets _)
+  private def makePreferenceWidget(preference: PreferenceDescriptor[_]): NodeSeq = preference match {
+
+    case BooleanPref(typedPreference) ⇒
+      def onChange(b: Boolean) = {
+        setPreferences { _.setPreference(typedPreference, b) }
+        inputOpt map doFormat getOrElse Noop
+      }
+      ajaxCheckbox(currentPreferences(typedPreference), onChange)
+
+    case IntegerPref(typedPreference, _, _) ⇒
+      def onChange(s: String) = {
+        val n = Integer.parseInt(s)
+        setPreferences { _.setPreference(typedPreference, n) }
+        inputOpt map doFormat getOrElse Noop
+      }
+      ajaxText(currentPreferences(typedPreference).toString, onChange _, "size" -> "2")
+
+  }
+
+  private def currentPreferences = FormattingPrefs.is
+
+  private def setPreferences(f: FormattingPreferences ⇒ FormattingPreferences) = FormattingPrefs(f(currentPreferences))
 
   private def format(s: String): Either[String, String] =
     try {
@@ -82,7 +81,7 @@ class FormatSnippet {
       case Left(error) ⇒
         SetHtml("output", Text(error))
       case Right(formattedSource) ⇒
-        val output = <pre class="brush: scala">{ formattedSource }</pre>
+        val output = <pre class="brush: scala; gutter: false; toolbar: false">{ formattedSource }</pre>
         SetHtml("output", output) & Run("SyntaxHighlighter.highlight()")
     }
 
@@ -97,6 +96,7 @@ object FormatSnippet {
       case prefType@BooleanPreference ⇒ prefType.cast(descriptor)
     }
   }
+
   object IntegerPref {
     def unapply(descriptor: PreferenceDescriptor[_]): Option[(PreferenceDescriptor[Int], Int, Int)] = condOpt(descriptor.preferenceType) {
       case prefType@IntegerPreference(min, max) ⇒ (prefType.cast(descriptor), min, max)
