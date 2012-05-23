@@ -1,9 +1,9 @@
 import sbt._
 
 class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
-  val liftVersion = "2.1-RC2"
+  val liftVersion = "2.3"
 
-  val scalariform = "org.scalariform" %% "scalariform" % "0.0.5"
+  val scalariform = "org.scalariform" %% "scalariform" % "0.1.2"
   	
   // uncomment the following if you want to use the snapshot repo
   //val scalatoolsSnapshot = ScalaToolsSnapshots
@@ -15,9 +15,9 @@ class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
   override def libraryDependencies = Set(
     "net.liftweb" %% "lift-webkit" % liftVersion % "compile->default",
     "net.liftweb" %% "lift-mapper" % liftVersion % "compile->default",
-    "org.mortbay.jetty" % "jetty" % "6.1.22" % "test->default",
-    "junit" % "junit" % "4.5" % "test->default",
-    "org.scala-tools.testing" %% "specs" % "1.6.5" % "test->default",
-    "com.h2database" % "h2" % "1.2.138"
+    "org.mortbay.jetty" % "jetty" % "6.1.22" % "test->default"
+    // "junit" % "junit" % "4.5" % "test->default",
+    // "org.scala-tools.testing" %% "specs" % "1.6.5" % "test->default",
+    // "com.h2database" % "h2" % "1.2.138"
   ) ++ super.libraryDependencies
 }
